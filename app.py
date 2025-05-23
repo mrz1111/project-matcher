@@ -11,10 +11,18 @@ Usage:
 
 import subprocess
 import sys
+
 # Force install required packages
+print("Installing required packages...")
 packages = ['plotly', 'openai', 'PyPDF2', 'python-docx']
 for package in packages:
+    print(f"Installing {package}...")
     subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
+print("All packages installed!")
+# Now your regular imports
+import streamlit as st
+import requests
+import pandas as pd
 import plotly.express as px
 import streamlit as st
 import requests
