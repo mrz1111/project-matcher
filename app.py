@@ -8,22 +8,35 @@ Usage:
     streamlit run cv_analyzer.py
 """
 
-
 import subprocess
 import sys
 
-# Force install required packages
-print("Installing required packages...")
-packages = ['plotly', 'openai', 'PyPDF2', 'python-docx']
-for package in packages:
-    print(f"Installing {package}...")
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
-print("All packages installed!")
+# Install packages more reliably
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Install required packages one by one
+try:
+    import plotly
+except ImportError:
+    install('plotly')
+    
+try:
+    import openai
+except ImportError:
+    install('openai')
+    
+try:
+    import PyPDF2
+except ImportError:
+    install('PyPDF2')
+    
+try:
+    import docx
+except ImportError:
+    install('python-docx')
+
 # Now your regular imports
-import streamlit as st
-import requests
-import pandas as pd
-import plotly.express as px
 import streamlit as st
 import requests
 import pandas as pd
@@ -38,6 +51,8 @@ import docx
 import io
 import re
 import random
+
+# Rest of your code continues here...
 
 # === PAGE CONFIG WITH CUSTOM THEME ===
 st.set_page_config(
