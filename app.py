@@ -8,6 +8,14 @@ Usage:
     streamlit run cv_analyzer.py
 """
 
+
+import subprocess
+import sys
+# Force install required packages
+packages = ['plotly', 'openai', 'PyPDF2', 'python-docx']
+for package in packages:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', package])
+import plotly.express as px
 import streamlit as st
 import requests
 import pandas as pd
