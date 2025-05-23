@@ -1,0 +1,7 @@
+streamlit
+openai
+pandas
+plotly
+requests
+PyPDF2
+python-docx
